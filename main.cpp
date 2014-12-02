@@ -13,11 +13,11 @@ struct storableItem {
     char *itemName;
     };
 
-vector<storableItem> getItems(int numOfItems);
+vector<storableItem> getItems();
 
 int main()
 {
-    int numOfItems, maxWeight, maxVol; //variable to store the number of items the person needs to bring, the maximum weight the backpack can hold, and the maximum volume it can hold
+    int maxWeight, maxVol; //variable to store the maximum weight the backpack can hold and the maximum volume it can hold
     vector<storableItem> listOfItems; //initial vector of all items
     cout << "How many items do you want to take with you?" << endl;  //ask user how many items they will want to take
     cin >> numOfItems;
@@ -26,7 +26,7 @@ int main()
     cout << "What is the volume of the backpack (in cubic inches)?" << endl; //ask user what the volume of the backpack is
     cin >> maxVol;
 
-    listOfItems = getItems(numOfItems);  //get the list of items
+    listOfItems = getItems();  //get the list of items from the user
 
     cout << "test" << endl;
     return 0;

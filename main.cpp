@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <sstream>
 
 using namespace std;
 
 //global so that we can create vectors of storableItem s
 //Structure that stores the information needed for each item
-//doubles used so that we can accomodate fractions of a pound
+//doubles used so that we can accomodate fractions of a pound or cubic inch
 struct storableItem {
     double volume;
     double weight;
@@ -16,20 +17,21 @@ struct storableItem {
 
 vector<storableItem> getItems();
 //vector<storableItem> calculateBestItemVal(vector<storableItem> listOfItems, int maxWeight, int maxVol);
-//void printItems(vector<storableItem> items);
+void printItems(vector<storableItem> items);
+double getDouble(string request);
 int main()
 {
     double maxWeight, maxVol; //variable to store the maximum weight the backpack can hold and the maximum volume it can hold
     vector<storableItem> listOfItems, optimItems; //initial vector of all items and vector of the optimized items
 
-    cout << "What is the maximum weight that your backback can hold (in pounds)?" << endl; //ask user how much weight the backpack can hold
-    cin >> maxWeight;
+    maxWeight=getDouble("What is the maximum weight that your backback can hold (in pounds)?"); //ask user how much weight the backpack can hold
 
-    cout << "What is the volume of the backpack (in cubic inches)?" << endl; //ask user what the volume of the backpack is
-    cin >> maxVol;
+    maxVol = getDouble("What is the volume of the backpack (in cubic inches)?");    //ask user what the volume of the backpack is
 
     listOfItems = getItems();  //get the list of items from the user
+    cout << "Calculating items, please wait..." << endl;
     //optimItems = calculateBestItemsVal(listOfItems, maxWeight, maxVol);
+    printItems(listOfItems);
     //printItems(optimItems);
 
     cout << "test" << endl;
@@ -45,26 +47,22 @@ vector<storableItem> getItems()
 
     while (tolower(tempResponse[0]) != 'y') //Keep asking for items until they respond that they are done adding items
     {
-        getline(cin, tempResponse); //fix input from previous use of cin so getline works
         tempItem = new storableItem;
 
         cout << "What is the name of the item?" << endl;
         getline(cin, tempName); //allows use of spaces in input
         tempItem->itemName = tempName;
 
-        cout << "How much does the item weigh (in pounds)?" << endl;
-        cin >> tempItem->weight;
+        tempItem->weight = getDouble("How much does the item weigh (in pounds)?");  //ask for weight of item
 
-        cout << "How much space does the item take up (in cubic inches)?" << endl;
-        cin >> tempItem->volume;
+        tempItem->volume = getDouble("How much space does the item take up (in cubic inches)?");    //ask for volume of item
 
-        cout << "what is the price of the item (in dollars)?" << endl;
-        cin >> tempItem->price;
+        tempItem->price = getDouble("What is the price of the item (in dollars)?"); //ask user for the price of the item
 
         items.push_back(*tempItem);
 
         cout << "Are you done adding items (y/n)?" << endl;
-        cin >> tempResponse;
+        getline(cin, tempResponse);
     }
     return items;
 }
@@ -73,13 +71,36 @@ vector<storableItem> getItems()
 vector<storableItem> calculateBestItemVal(vector<storableItem> listOfItems, int maxWeight, int maxVol)
 {
 
-
+//if large number of items, add progress bar?
 
 }
+*/
 
 void printItems(vector<storableItem> items)
 {
-
+    cout << "To spend the least amount of money, you should take the following items:" << endl;
+    for (int i=0; i< items.size(); i++)
+    {
+        cout << "Item " << i+1 << ": " << items[0].itemName << endl;
+    }
 }
 
-*/
+double getDouble(string request) //safely get double from input, from http://www.cplusplus.com/forum/articles/6046/
+{
+    string input;
+    double tmpVal;
+    bool valid=false;
+    while (!valid)
+    {
+        cout << request << endl;
+        getline(cin, input);
+        stringstream converter(input);
+        if (converter >> tmpVal)
+            valid=true;
+        else
+        {
+            cout << "That is not a valid number.  Please enter a valid number." << endl;
+        }
+    }
+    return tmpVal;
+}

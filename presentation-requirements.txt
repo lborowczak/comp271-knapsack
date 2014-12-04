@@ -4,6 +4,7 @@ Presentation:
   {
     Description of problem (1 min)
     Description of data structures implemented (1 min)
+    Pros/cons of (project?)
   }
   
   Demo of project (1-2 mins)

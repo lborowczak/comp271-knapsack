@@ -67,12 +67,29 @@ vector<storableItem> getItems()
     return items;
 }
 
-/*
+*
 vector<storableItem> calculateBestItemVal(vector<storableItem> listOfItems, int maxWeight, int maxVol)
 {
-
+vector<storableItems>knapsack;
+double totalWeight;
+while (totalWeight<maxWeight) //While loop to ensure maxweight isn't exceeded. 
+{
+    for(int i=1; i<items.size(); i++) //For loop that going through each value(or item) in items until maxsize is reached
+    {
+        items[i]weight/maxWeight = weightpct[i]; //divides the weight at value i by maxweight creating weightpct
+        items[i]volume/maxVol = volpct[i]; //divides the volume at value i by maxvolume creating volpct
+        weightpct[i] + volpct[i] = wvpct[i]; //adds the values of weight pct and volpct at i together creating wvpct
+        wvpct[i]/items[i]price = itemValue[i]; //divides wvpct at value i by the items price at value i
+        double smallest = itemValue[0];
+        if(itemValue[i]<smallest)//if statement if itemvalue at value i is less than value at smallest
+        {
+            smallest=itemValue[i]; //smallest becomest item value at i
+        }
+        smallest = knapsack.push_back(i); //adds smallest to end of vector knapsack
+        totalWeight +=item[i]weight;//adds weight of item i to total weight
+    }
+}
 //if large number of items, add progress bar?
-
 }
 */
 

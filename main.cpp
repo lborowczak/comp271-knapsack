@@ -76,16 +76,14 @@ while (totalWeight<maxWeight) //While loop to ensure maxweight isn't exceeded.
 {
     for(int i=1; i<items.size(); i++) //For loop that going through each value(or item) in items until maxsize is reached
     {
-        items[i]weight/maxWeight = weightpct[i]; //divides the weight at value i by maxweight creating weightpct
-        items[i]volume/maxVol = volpct[i]; //divides the volume at value i by maxvolume creating volpct
-        weightpct[i] + volpct[i] = wvpct[i]; //adds the values of weight pct and volpct at i together creating wvpct
-        wvpct[i]/items[i]price = itemValue[i]; //divides wvpct at value i by the items price at value i
-        double smallest = itemValue[0];
-        if(itemValue[i]<smallest)//if statement if itemvalue at value i is less than value at smallest
+       items[i]weight/items[i]vol = wvpct[i]; //divides weight by items to create wvpct
+       items[i]price/wvpct[i]=itemsValue[i]; //divides price by wvpct to create itemsValue
+        double greatest = itemValue[0];
+        if(itemValue[i]>largest)//if statement if itemvalue at value i is greater than value at greatest
         {
-            smallest=itemValue[i]; //smallest becomest item value at i
+            greatest=itemValue[i]; //greatest becomest item value at i
         }
-        smallest = knapsack.push_back(i); //adds smallest to end of vector knapsack
+        greatest = knapsack.push_back(i); //adds smallest to end of vector knapsack
         totalWeight +=item[i]weight;//adds weight of item i to total weight
     }
 }

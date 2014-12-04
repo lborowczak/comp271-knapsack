@@ -1,0 +1,10 @@
+Powerpoint including:
+{
+Description of problem (1 min)
+Description of data structures implemented (1 min)
+}
+
+Demo of project (1-2 mins)
+ask for questions (<1 minute)
+
+All members must be present and be able to answer questions

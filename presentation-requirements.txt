@@ -1,10 +1,10 @@
 Presentation:
 {
-  Powerpoint including:
+  Powerpoint:
   {
-    Description of problem (1 min)
-    Description of data structures implemented (1 min)
-    Pros/cons of (project?)
+    Description of problem (1 minute)
+    Description of data structures implemented (1 minute)
+    Good things/bad things in our project (for example, what was the hardest and easiest thing to do, or was it easier/harder than you thought it was going to be?)
   }
   
   Demo of project (1-2 mins)

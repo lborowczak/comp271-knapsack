@@ -67,44 +67,40 @@ vector<storableItem> getItems()
     return items;
 }
 
-*
-vector<storableItem> calculateBestItemVal(vector<storableItem> listOfItems, int maxWeight, int maxVol)
+vector<storableItem> calculateBestItemVal(vector<storableItem> items, int maxWeight, int maxVol)
 {
-vector<storableItems>calculateBestItemVal;
-double totalWeight;
-while (totalWeight<maxWeight) //While loop to ensure maxweight isn't exceeded. 
-{
-    for(int i=0; i<=items.size(); i++) //For loop that going through each value(or item) in items until maxsize is reached
+    vector<storableItem>calculateBestItemVal;
+    double totalWeight;
+    while (totalWeight<maxWeight) //While loop to ensure maxweight isn't exceeded.
     {
-        for(int w=0; w<=maxWeight; w++) //for loop that goes through each value weight until maxWeight is reached
+        for(int i=0; i<=items.size(); i++) //For loop that going through each value(or item) in items until maxsize is reached
         {
-            for(int v=0; v<=maxVol; v++) //for loop that goes through each value voluem until maxVol is reached
+            for(int w=0; w<=maxWeight; w++) //for loop that goes through each value weight until maxWeight is reached
             {
-                if(i==0||w==0||v==0) //if values at i, w or v equal zero, calculateBestItemVal equal zero
+                for(int v=0; v<=maxVol; v++) //for loop that goes through each value voluem until maxVol is reached
                 {
-                    calculateBestItemVal[i][w][v]=0;
-                }
-                else if(items[i-1]weight) <= maxWeight||items[i-1]volume<=maxVol)//checks if previous weight and volume was less than/equal to maxWeight and maxVolume
-                {
-                    //stores 
-                    calculateBestItemVal[i][w][v] = max(items[i-1]price + calculateBestItemVal[i-1][w-items[i-1]weight][v-items[i-1]volume], calculateBestItemVal[i-1][w][v]);//gets max value at and put thems into calculateBestItemVal
-                   
-                    totalWeight += item[i]weight; //adds weight of item to total weight
-                }
-                else
-                {
-                    calculateBestItemVal[i][w][v]=calculateBestItemVal[i-1][w][v]; 
-                    totalWeight +=item[i]weight;
+                    if(i==0||w==0||v==0) //if values at i, w or v equal zero, calculateBestItemVal equal zero
+                    {
+                        calculateBestItemVal[i][w][v]=0;
+                    }
+                    else if(items[i-1]weight) <= maxWeight||items[i-1]volume<=maxVol)//checks if previous weight and volume was less than/equal to maxWeight and maxVolume
+                    {
+                        //stores
+                        calculateBestItemVal[i][w][v] = max(items[i-1]price + calculateBestItemVal[i-1][w-items[i-1].weight][v-items[i-1].volume], calculateBestItemVal[i-1][w][v]);//gets max value at and put thems into calculateBestItemVal
+
+                        totalWeight += items[i].weight; //adds weight of item to total weight
+                    }
+                    else
+                    {
+                        calculateBestItemVal[i][w][v]=calculateBestItemVal[i-1][w][v];
+                        totalWeight +=items[i].weight;
+                    }
                 }
             }
+            return calculateBestItemVal[i][w][v];
         }
-        return calculateBestItemVal[i][w][v];
     }
 }
-//if large number of items, add progress bar?
-}
-*/
-
 void printItems(vector<storableItem> items)
 {
     cout << "To spend the least amount of money, you should take the following items:" << endl;
